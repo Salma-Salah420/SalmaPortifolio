@@ -1,1 +1,594 @@
-# SalmaPortifolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salma Salah | Data Engineer & AI Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --dark: #1e1e2c;
+            --light: #f5f5f7;
+            --gray: #8d8d8d;
+            --success: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        #about {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .skill-item {
+            background-color: var(--light);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 100px 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .project-info p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tech-item {
+            background-color: var(--light);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* Certificates Section */
+        #certificates {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .certificate-card {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .certificate-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .certificate-card p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .certificate-card .date {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        #contact p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: var(--dark);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            #hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+                height: auto;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero-image {
+                margin-top: 50px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Salma Salah</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#certificates">Certificates</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#" class="btn">Resume</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div style="display: flex; align-items: center;">
+                <div class="hero-content">
+                    <h1>Salma Salah</h1>
+                    <h2>Data Engineer & AI Specialist</h2>
+                    <p>Computer Science student passionate about AI, data engineering, and competitive programming. Founder of Code Amateurs, building systems that optimize real-world processes.</p>
+                    <a href="#projects" class="btn">View My Work</a>
+                </div>
+                <div class="hero-image">
+                    <img src="e:\baba\1724014470220 linked.jpeg" alt="Salma Salah">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a motivated Computer Science and Artificial Intelligence student at Helwan National University with a strong passion for problem-solving, competitive programming, and emerging technologies like data engineering, AI, and machine learning.</p>
+                    <p>Founder of Code Amateurs, a LinkedIn content creation team focused on sharing knowledge in programming, operating systems, and computer architecture. Seeking opportunities to apply my skills in real-world projects and contribute to innovative solutions in AI and data-driven technologies.</p>
+                    
+                    <div class="skills">
+                        <div class="skill-category">
+                            <h3>Programming</h3>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">Java</span>
+                            <span class="skill-item">C/C++</span>
+                            <span class="skill-item">JavaScript</span>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Data & AI</h3>
+                            <span class="skill-item">Data Science</span>
+                            <span class="skill-item">Machine Learning</span>
+                            <span class="skill-item">SQL</span>
+                            <span class="skill-item">NumPy/Pandas</span>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Tools</h3>
+                            <span class="skill-item">Ubuntu/Linux</span>
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">UML</span>
+                            <span class="skill-item">Visio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Working on laptop">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI Job Scheduling">
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Job Scheduling System</h3>
+                        <p>Developed an AI-based job scheduling system to optimize task allocation and minimize processing time.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">Python</span>
+                            <span class="tech-item">Genetic Algorithm</span>
+                            <span class="tech-item">Backtracking</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="System Analysis">
+                    </div>
+                    <div class="project-info">
+                        <h3>System Analysis for Abanob Ceramic</h3>
+                        <p>Conducted the analysis phase for a system analysis project, gathering requirements and designing workflows.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">UML</span>
+                            <span class="tech-item">Visio</span>
+                            <span class="tech-item">Requirement Analysis</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Parking System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Parking Management System</h3>
+                        <p>Designed and implemented a parking management system to automate vehicle entry and slot allocation.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">Java</span>
+                            <span class="tech-item">OOP</span>
+                            <span class="tech-item">GUI</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tourism Website">
+                    </div>
+                    <div class="project-info">
+                        <h3>Tourism Website</h3>
+                        <p>Created a responsive and user-friendly frontend for a tourism website with booking functionality.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">HTML</span>
+                            <span class="tech-item">CSS</span>
+                            <span class="tech-item">JavaScript</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="container">
+            <h2 class="section-title">My Certificates</h2>
+            <div class="certificates-grid">
+                <!-- Certificate 1 -->
+                <div class="certificate-card">
+                    <h3>Intro to C Programming</h3>
+                    <p>MaharaTech ITIMooca</p>
+                    <p class="date">2022</p>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="certificate-card">
+                    <h3>Intro to Python</h3>
+                    <p>DataCamp</p>
+                    <p class="date">2023</p>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="certificate-card">
+                    <h3>Machine Learning</h3>
+                    <p>DataCamp</p>
+                    <p class="date">2023</p>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="certificate-card">
+                    <h3>Intro to SQL</h3>
+                    <p>DataCamp</p>
+                    <p class="date">2023</p>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="certificate-card">
+                    <h3>Intro to OOP in Java</h3>
+                    <p>DataCamp</p>
+                    <p class="date">2023</p>
+                </div>
+
+                <!-- Certificate 6 -->
+                <div class="certificate-card">
+                    <h3>Electronic Course from Floved Book</h3>
+                    <p>Udemy</p>
+                    <p class="date">2022</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Whether you're interested in collaborating or just want to say hello, I'd love to hear from you!</p>
+            <a href="mailto:salmahemedal@gmail.com" class="btn">Email Me</a>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/salma-salah-b59253295" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Salma-Salah420" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Salma Salah. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
