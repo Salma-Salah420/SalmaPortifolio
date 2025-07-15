@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +37,7 @@
         /* Header */
         header {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             z-index: 100;
@@ -58,6 +59,36 @@
         .nav-links {
             display: flex;
             gap: 30px;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+            justify-content: space-between;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
         }
 
         .nav-links a {
@@ -89,10 +120,16 @@
 
         /* Hero Section */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: 80px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
         }
 
         .hero-content {
@@ -124,7 +161,7 @@
         .hero-image img {
             max-width: 100%;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         /* About Section */
@@ -205,7 +242,7 @@
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
 
@@ -273,7 +310,7 @@
             background-color: var(--light);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .certificate-card h3 {
@@ -328,36 +365,139 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .projects-grid,
+            .certificates-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            
+
             .hero-content h2 {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
-            
+
             #hero {
+                padding-top: 120px;
+                min-height: auto;
+            }
+
+            .hero-container {
                 flex-direction: column;
                 text-align: center;
-                padding-top: 120px;
-                height: auto;
+                gap: 30px;
             }
-            
+
             .about-content {
                 flex-direction: column;
+                gap: 30px;
             }
-            
+
             .hero-image {
-                margin-top: 50px;
+                order: -1;
             }
-            
+
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                width: 180px;
+                z-index: 200;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .projects-grid,
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img,
+            .hero-image img {
+                max-width: 90vw;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .project-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .project-info p,
+            .certificate-card p {
+                font-size: 0.95rem;
+            }
+
+            .skills {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .skill-category {
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 5px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 8px 12px;
+                font-size: 0.95rem;
+            }
+
+            .project-info h3 {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -371,6 +511,11 @@
                     <a href="#contact">Contact</a>
                     <a href="#" class="btn">Resume</a>
                 </div>
+                <div class="hamburger" id="hamburger-menu" aria-label="Open navigation" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -378,15 +523,17 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="container">
-            <div style="display: flex; align-items: center;">
+            <div class="hero-container">
                 <div class="hero-content">
                     <h1>Salma Salah</h1>
                     <h2>Data Engineer & AI Specialist</h2>
-                    <p>Computer Science student passionate about AI, data engineering, and competitive programming. Founder of Code Amateurs, building systems that optimize real-world processes.</p>
+                    <p>Computer Science student passionate about AI, data engineering, and competitive programming.
+                        Founder of Code Amateurs, building systems that optimize real-world processes.</p>
                     <a href="#projects" class="btn">View My Work</a>
                 </div>
                 <div class="hero-image">
-                    <img src="https://onu65v95kt.ufs.sh/f/4R8xh8GuA59KSxC8xifbMJ85ta4DKdn1QLEHikyIZBvjeA0m" alt="Salma Salah">
+                    <img src="https://onu65v95kt.ufs.sh/f/4R8xh8GuA59KSxC8xifbMJ85ta4DKdn1QLEHikyIZBvjeA0m"
+                        alt="Salma Salah">
                 </div>
             </div>
         </div>
@@ -398,9 +545,14 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm a motivated Computer Science and Artificial Intelligence student at Helwan National University with a strong passion for problem-solving, competitive programming, and emerging technologies like data engineering, AI, and machine learning.</p>
-                    <p>Founder of Code Amateurs, a LinkedIn content creation team focused on sharing knowledge in programming, operating systems, and computer architecture. Seeking opportunities to apply my skills in real-world projects and contribute to innovative solutions in AI and data-driven technologies.</p>
-                    
+                    <p>I'm a motivated Computer Science and Artificial Intelligence student at Helwan National
+                        University with a strong passion for problem-solving, competitive programming, and emerging
+                        technologies like data engineering, AI, and machine learning.</p>
+                    <p>Founder of Code Amateurs, a LinkedIn content creation team focused on sharing knowledge in
+                        programming, operating systems, and computer architecture. Seeking opportunities to apply my
+                        skills in real-world projects and contribute to innovative solutions in AI and data-driven
+                        technologies.</p>
+
                     <div class="skills">
                         <div class="skill-category">
                             <h3>Programming</h3>
@@ -426,7 +578,8 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Working on laptop">
+                    <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                        alt="Working on laptop">
                 </div>
             </div>
         </div>
@@ -440,11 +593,13 @@
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI Job Scheduling">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="AI Job Scheduling">
                     </div>
                     <div class="project-info">
                         <h3>AI Job Scheduling System</h3>
-                        <p>Developed an AI-based job scheduling system to optimize task allocation and minimize processing time.</p>
+                        <p>Developed an AI-based job scheduling system to optimize task allocation and minimize
+                            processing time.</p>
                         <div class="project-tech">
                             <span class="tech-item">Python</span>
                             <span class="tech-item">Genetic Algorithm</span>
@@ -457,11 +612,13 @@
                 <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="System Analysis">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80"
+                            alt="System Analysis">
                     </div>
                     <div class="project-info">
                         <h3>System Analysis for Abanob Ceramic</h3>
-                        <p>Conducted the analysis phase for a system analysis project, gathering requirements and designing workflows.</p>
+                        <p>Conducted the analysis phase for a system analysis project, gathering requirements and
+                            designing workflows.</p>
                         <div class="project-tech">
                             <span class="tech-item">UML</span>
                             <span class="tech-item">Visio</span>
@@ -474,11 +631,13 @@
                 <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Parking System">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                            alt="Parking System">
                     </div>
                     <div class="project-info">
                         <h3>Parking Management System</h3>
-                        <p>Designed and implemented a parking management system to automate vehicle entry and slot allocation.</p>
+                        <p>Designed and implemented a parking management system to automate vehicle entry and slot
+                            allocation.</p>
                         <div class="project-tech">
                             <span class="tech-item">Java</span>
                             <span class="tech-item">OOP</span>
@@ -491,11 +650,13 @@
                 <!-- Project 4 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tourism Website">
+                        <img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Tourism Website">
                     </div>
                     <div class="project-info">
                         <h3>Tourism Website</h3>
-                        <p>Created a responsive and user-friendly frontend for a tourism website with booking functionality.</p>
+                        <p>Created a responsive and user-friendly frontend for a tourism website with booking
+                            functionality.</p>
                         <div class="project-tech">
                             <span class="tech-item">HTML</span>
                             <span class="tech-item">CSS</span>
@@ -564,10 +725,12 @@
             <h2 class="section-title">Get In Touch</h2>
             <p>Whether you're interested in collaborating or just want to say hello, I'd love to hear from you!</p>
             <a href="mailto:salmahemedal@gmail.com" class="btn">Email Me</a>
-            
+
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/salma-salah-b59253295" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Salma-Salah420" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/salma-salah-b59253295" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Salma-Salah420" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
@@ -589,6 +752,22 @@
                 });
             });
         });
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        // Close nav on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
     </script>
 </body>
+
 </html>
